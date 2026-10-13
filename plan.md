@@ -11,7 +11,7 @@ Build a single-page React/Vite site in the initialized Webdev project on route `
 - `client/src/App.tsx` — the registration route and not-found fallback.
 - `client/public/manus-routes.json` — route declaration for `/`.
 - Managed project image storage — four custom illustrations for the dance scene, dancer, dhol player and rangoli vignette.
-- `client/public/navarathiri-mark.svg` and `app.config.ts` — custom dancer wordmark mark and project logo metadata.
+- `client/public/navarathiri-mark.svg`, the managed Garba emblem and `app.config.ts` — hand-illustrated rangoli dancer site mark, generated hi-colour event emblem and project logo metadata.
 - `client/index.html` — event-specific title, description, theme color and favicon.
 
 ## Design direction
@@ -20,13 +20,13 @@ Build a single-page React/Vite site in the initialized Webdev project on route `
 - **Core Principles:** visibly joyful color; distinct, human-feeling illustration on each visual beat; concise event-first copy; familiar, easy forms with no visual clutter.
 - **Color Philosophy:** turmeric and warm paper bring light; royal cobalt anchors legibility; coral, fuchsia, leaf green and lilac give each illustration and section its own pulse. Saturated colors belong in art and small page accents; inputs remain clean and high-contrast.
 - **Layout Paradigm:** asymmetrical poster-like hero with college attribution and scene art, followed by a compact three-piece art strip and a single-column registration journey, responsive to phone widths.
-- **Signature Elements:** bespoke dancing-figure logo; four visibly distinct illustrations; three small numeral badges in different festival colors.
+- **Signature Elements:** a full-colour Garba dancer medallion with a flying skirt and hand-drawn rangoli petals; four distinct festival illustrations; a generous-size repeat of the emblem at footer scale.
 - **Interaction Philosophy:** plain, exact labels; native radio and text controls; generous touch targets; group fields only when applicable; requiredness and errors visible and understandable.
 - **Animation:** small color/position response on hover and restrained group-field reveal only; no perpetual motion; respect reduced-motion preferences.
 - **Typography System:** a human editorial serif for “Navarathiri” and section titles; system sans-serif for labels, controls and supporting copy; no external font request.
 - **Brand Essence:** the joyful and practical sign-up point for an SNS College of Technology Navarathiri celebration with NIAT; **lively, crafted, welcoming**.
 - **Brand Voice:** short, clear and event-specific. Example copy: “Navarathiri at SNS.” “Register to take part.” Avoid generic filler, tagline fragments, decorative leading dashes and bullet-led microcopy.
-- **Wordmark & Logo:** a custom colorful hand-drawn garba dancer motif beside a plain typographic “Navarathiri” wordmark; no fabricated partner logos.
+- **Wordmark & Logo:** a boldly illustrated dancer spinning with raised dandiya, flared patterned ghaghra and an irregular petal medallion; it sits beside a restrained “Navarathiri” wordmark and scales for header, favicon and project branding. No partner marks are fabricated.
 - **Signature Brand Color:** royal cobalt (`#2557C8`) with saffron as its bright festival counterpoint.
 
 ## Form and event

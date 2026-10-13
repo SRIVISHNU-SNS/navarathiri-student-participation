@@ -37,7 +37,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .site-shell { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
 .topbar { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid rgba(34,37,79,.16); }
 .wordmark, .footer-brand { display: inline-flex; align-items: center; gap: 9px; color: var(--blue-deep); text-decoration: none; font: 700 22px/1 Georgia, "Times New Roman", serif; letter-spacing: -.05em; }
-.brand-mark { width: 44px; height: 44px; flex: 0 0 auto; }
+.brand-mark { width: 68px; height: 68px; flex: 0 0 auto; object-fit: contain; }
 .header-partners { display: flex; flex-direction: column; gap: 4px; color: var(--ink-soft); font-size: 10px; font-weight: 620; line-height: 1.2; letter-spacing: .04em; text-align: center; }
 .header-partners b, .footer b { color: var(--pink); font-weight: 800; }
 .top-link { min-height: 42px; display: inline-flex; align-items: center; gap: 10px; color: var(--blue-deep); text-decoration: none; font-size: 12px; font-weight: 700; }
@@ -128,7 +128,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .text-button { display: inline-flex; align-items: center; gap: 8px; margin-top: 21px; padding: 0 0 5px; border: 0; border-bottom: 1.5px solid var(--blue); background: none; color: var(--blue-deep); font-size: 12px; font-weight: 700; cursor: pointer; }
 .footer { min-height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-top: 1px solid rgba(34,37,79,.19); }
 .footer-brand { font-size: 19px; }
-.footer-brand .brand-mark { width: 37px; height: 37px; }
+.footer-brand .brand-mark { width: 58px; height: 58px; }
 .footer > p { margin: 0; color: var(--ink-soft); font-size: 10px; line-height: 1.5; text-align: center; }
 .back-top { color: var(--blue-deep); font-size: 11px; text-decoration: none; }
 .back-top:hover { color: var(--coral); }
@@ -151,7 +151,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   .site-shell { width: calc(100% - 28px); }
   .topbar { min-height: 66px; gap: 9px; }
   .wordmark { gap: 5px; font-size: 18px; }
-  .brand-mark { width: 37px; height: 37px; }
+  .brand-mark { width: 58px; height: 58px; }
   .header-partners { max-width: 115px; font-size: 8px; letter-spacing: .01em; }
   .top-link { min-height: 39px; gap: 5px; font-size: 10px; }
   .hero { display: flex; flex-direction: column; align-items: stretch; gap: 18px; min-height: unset; margin-top: 13px; padding: 28px 20px 19px; border-radius: 17px 17px 11px 17px; }
@@ -196,7 +196,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   .success-panel { margin-top: 24px; padding: 32px 19px; }
   .footer { min-height: 83px; flex-wrap: wrap; gap: 4px 10px; padding: 14px 0; }
   .footer-brand { font-size: 16px; }
-  .footer-brand .brand-mark { width: 31px; height: 31px; }
+  .footer-brand .brand-mark { width: 44px; height: 44px; }
   .footer > p { order: 3; width: 100%; font-size: 9px; text-align: left; }
   .back-top { margin-left: auto; font-size: 10px; }
 }
@@ -206,6 +206,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   .header-partners { max-width: 102px; font-size: 7px; }
   .top-link { font-size: 9px; }
   .hero { padding-right: 15px; padding-left: 15px; }
+  .brand-mark { width: 48px; height: 48px; }
   .art-tile figcaption { font-size: 7px; }
 }
 @media (prefers-reduced-motion: reduce) {
