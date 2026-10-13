@@ -38,6 +38,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .topbar { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid rgba(34,37,79,.16); }
 .wordmark, .footer-brand { display: inline-flex; align-items: center; gap: 9px; color: var(--blue-deep); text-decoration: none; font: 700 22px/1 Georgia, "Times New Roman", serif; letter-spacing: -.05em; }
 .brand-mark { width: 68px; height: 68px; flex: 0 0 auto; object-fit: contain; }
+.navarathiri-lockup { display: inline-flex; min-width: 0; flex-direction: column; align-items: flex-start; justify-content: center; gap: 0; }
+.wordmark-lettering { display: flex; align-items: baseline; white-space: nowrap; font-family: Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: -.085em; line-height: .97; }
+.wordmark-first { color: var(--blue-deep); }
+.wordmark-second { margin-left: -.015em; color: var(--coral); font-style: italic; font-weight: 500; letter-spacing: -.09em; }
+.wordmark-sash { display: block; width: 95%; height: 10px; margin-top: -1px; overflow: visible; }
+.wordmark-edition { margin-top: -1px; color: var(--green); font: 750 7px/1.15 ui-sans-serif, system-ui, sans-serif; letter-spacing: .2em; }
+.wordmark .wordmark-lettering { font-size: 23px; }
+.footer-brand .wordmark-lettering { font-size: 18px; }
 .header-partners { display: flex; flex-direction: column; gap: 4px; color: var(--ink-soft); font-size: 10px; font-weight: 620; line-height: 1.2; letter-spacing: .04em; text-align: center; }
 .header-partners b, .footer b { color: var(--pink); font-weight: 800; }
 .top-link { min-height: 42px; display: inline-flex; align-items: center; gap: 10px; color: var(--blue-deep); text-decoration: none; font-size: 12px; font-weight: 700; }
@@ -48,6 +56,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .event-place { display: flex; flex-direction: column; gap: 5px; margin: 0 0 19px; color: var(--blue-deep); font-size: 10px; font-weight: 800; letter-spacing: .11em; line-height: 1.35; text-transform: uppercase; }
 .event-place b { color: var(--pink); font-size: 14px; }
 .hero h1 { margin: 0; color: var(--blue-deep); font: 400 clamp(59px, 7.3vw, 91px)/.93 Georgia, "Times New Roman", serif; letter-spacing: -.075em; }
+.hero h1.hero-wordmark { margin: 0; color: var(--blue-deep); font: inherit; letter-spacing: normal; }
+.hero-wordmark .wordmark-lettering { font-size: clamp(59px, 7.3vw, 91px); }
+.hero-wordmark .wordmark-sash { width: 95%; height: 15px; margin-top: 1px; }
+.hero-wordmark .wordmark-edition { font-size: 8px; }
 .hero-intro { max-width: 360px; margin: 19px 0 23px; color: #34355f; font-size: 15px; line-height: 1.68; }
 .hero-cta { min-height: 49px; display: inline-flex; align-items: center; gap: 20px; padding: 0 17px; border: 1.5px solid var(--blue-deep); border-radius: 7px 7px 7px 3px; background: var(--blue-deep); color: white; text-decoration: none; font-size: 12px; font-weight: 700; transition: transform .17s ease, background .17s ease; }
 .hero-cta svg { color: #ffd94d; }
@@ -152,6 +164,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   .topbar { min-height: 66px; gap: 9px; }
   .wordmark { gap: 5px; font-size: 18px; }
   .brand-mark { width: 58px; height: 58px; }
+  .wordmark .wordmark-lettering { font-size: 19px; }
+  .footer-brand .wordmark-lettering { font-size: 16px; }
+  .wordmark-edition { font-size: 6px; }
+  .hero-wordmark .wordmark-lettering { font-size: clamp(49px, 13.2vw, 59px); }
   .header-partners { max-width: 115px; font-size: 8px; letter-spacing: .01em; }
   .top-link { min-height: 39px; gap: 5px; font-size: 10px; }
   .hero { display: flex; flex-direction: column; align-items: stretch; gap: 18px; min-height: unset; margin-top: 13px; padding: 28px 20px 19px; border-radius: 17px 17px 11px 17px; }
@@ -203,6 +219,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 360px) {
   .site-shell { width: calc(100% - 22px); }
   .wordmark { font-size: 16px; }
+  .wordmark .wordmark-lettering { font-size: 16px; }
   .header-partners { max-width: 102px; font-size: 7px; }
   .top-link { font-size: 9px; }
   .hero { padding-right: 15px; padding-left: 15px; }
@@ -211,4 +228,56 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+
+.field-hint { margin: -2px 0 0; color: var(--ink-soft); font-size: 10px; line-height: 1.45; }
+.admin-shell { display: flex; min-height: 100vh; flex-direction: column; }
+.admin-topbar { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid rgba(34,37,79,.16); }
+.admin-topbar .brand-mark { width: 58px; height: 58px; }
+.admin-back { display: inline-flex; min-height: 42px; align-items: center; gap: 7px; color: var(--blue-deep); font-size: 11px; font-weight: 700; text-decoration: none; }
+.admin-back:hover { color: var(--coral); }
+.admin-main { width: 100%; flex: 1; padding: 60px 0 72px; }
+.admin-lock-panel { width: min(100%, 470px); margin: 0 auto; padding: 36px 30px 32px; border: 1px solid rgba(34,37,79,.12); border-radius: 12px 12px 7px 12px; background: var(--white); box-shadow: 0 9px 30px rgba(34,37,79,.06); }
+.admin-lock-panel > p[role="status"] { display: flex; align-items: center; gap: 10px; }
+.admin-lock-panel > .section-kicker { margin-bottom: 12px; }
+.admin-lock-panel h1, .admin-heading h1 { margin: 0; color: var(--blue-deep); font: 400 clamp(34px, 5vw, 48px)/1.04 Georgia, "Times New Roman", serif; letter-spacing: -.055em; }
+.admin-description { margin: 12px 0 25px; color: var(--ink-soft); font-size: 13px; line-height: 1.55; }
+.admin-pin-form { display: grid; gap: 9px; }
+.admin-pin-form input { width: 100%; min-height: 51px; padding: 13px 14px; border: 1px solid #d8d4e1; border-radius: 7px; background: var(--white); color: var(--ink); font: 600 18px/1.2 ui-sans-serif, system-ui, sans-serif; letter-spacing: .25em; }
+.admin-pin-form input:focus { border-color: var(--blue); outline: 3px solid rgba(37,87,200,.15); }
+.admin-unlock { width: 100%; margin-top: 9px; }
+.admin-message { margin: 7px 0; color: #9b352c; font-size: 12px; line-height: 1.55; }
+.admin-spinner { animation: spin .8s linear infinite; }
+.admin-heading { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 19px; }
+.admin-heading .section-kicker { margin-bottom: 9px; }
+.admin-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.admin-action { min-height: 39px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 0 12px; border: 1px solid rgba(34,37,79,.24); border-radius: 6px; background: var(--white); color: var(--blue-deep); font: 650 11px/1 ui-sans-serif, system-ui, sans-serif; text-decoration: none; cursor: pointer; }
+.admin-action:hover:not(:disabled):not(.is-disabled) { border-color: var(--blue); background: #eef1ff; }
+.admin-action:disabled, .admin-action.is-disabled { color: #898695; cursor: not-allowed; opacity: .6; }
+.admin-retention { margin: 0 0 13px; color: #6a5a35; font-size: 11px; line-height: 1.5; }
+.admin-table-card { overflow: hidden; border: 1px solid rgba(34,37,79,.15); border-radius: 9px; background: var(--white); }
+.admin-table-heading { min-height: 50px; display: flex; align-items: center; gap: 7px; padding: 0 16px; border-bottom: 1px solid rgba(34,37,79,.13); background: #fff5dc; color: var(--ink-soft); font-size: 11px; }
+.admin-table-heading strong { color: var(--blue-deep); font: 700 19px/1 Georgia, serif; }
+.admin-table-scroll { max-width: 100%; overflow: auto; overscroll-behavior-x: contain; }
+.admin-table { width: 100%; min-width: 1260px; border-collapse: collapse; color: var(--ink); font-size: 11px; text-align: left; }
+.admin-table th, .admin-table td { padding: 11px 12px; border-bottom: 1px solid #ebe8ef; vertical-align: top; }
+.admin-table th { position: sticky; top: 0; background: #fbf9f3; color: #47435f; font-size: 10px; font-weight: 750; white-space: nowrap; }
+.admin-table tbody tr:last-child td { border-bottom: 0; }
+.admin-table tbody tr:hover { background: #fffaf0; }
+.admin-query-cell { min-width: 180px; max-width: 300px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.admin-empty { min-height: 140px; display: grid; place-items: center; color: var(--ink-soft); font-size: 13px; }
+.admin-empty p { margin: 0; }
+.admin-footer { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 15px; border-top: 1px solid rgba(34,37,79,.16); color: var(--ink-soft); font-size: 10px; }
+
+@media (max-width: 620px) {
+  .admin-topbar { min-height: 68px; }
+  .admin-topbar .brand-mark { width: 46px; height: 46px; }
+  .admin-main { padding: 38px 0 50px; }
+  .admin-lock-panel { padding: 28px 19px 23px; }
+  .admin-heading { align-items: flex-start; flex-direction: column; }
+  .admin-actions { width: 100%; gap: 6px; }
+  .admin-action { flex: 1; min-width: 0; padding: 0 8px; font-size: 10px; }
+  .admin-table { min-width: 1100px; }
+  .admin-footer { min-height: 58px; font-size: 9px; }
 }

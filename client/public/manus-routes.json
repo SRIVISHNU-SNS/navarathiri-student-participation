@@ -1,1 +1,1 @@
-{"routes":[{"path":"/","title":"Navarathiri Student Participation"}]}
+{"routes":[{"path":"/","title":"Navarathiri registration"},{"path":"/admin","title":"Organiser dashboard"}]}

@@ -1,0 +1,30 @@
+databases:
+  - name: navarathiri-db
+    databaseName: navarathiri
+    user: navarathiri
+    plan: free
+    region: singapore
+    postgresMajorVersion: "18"
+    ipAllowList: []
+
+services:
+  - type: web
+    name: navarathiri-participation
+    runtime: node
+    plan: free
+    region: singapore
+    branch: main
+    buildCommand: corepack enable && pnpm install --frozen-lockfile --prod=false && pnpm build:render
+    startCommand: pnpm start:render
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: navarathiri-db
+          property: connectionString
+      - key: ADMIN_PIN
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true

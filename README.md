@@ -1,14 +1,18 @@
 # Navarathiri Student Participation
 
-React / Express / tRPC / Drizzle starter, adapted from the Sandbox web-db-user template.
+A mobile-first registration site for Navarathiri at SNS College of Technology, Coimbatore × NIAT. The public form stores registrations in Postgres. The organiser-only dashboard is at `/admin`; students do not enter a code.
 
-- `pnpm dev`: development server; honors `PORT` (default 3000).
-- `pnpm build` / `pnpm start`: build and serve `dist/index.js` and `dist/public/`.
-- `pnpm db:migrate`: apply checked-in migrations. `pnpm db:push`: generate and apply new schema changes.
-- `pnpm check` / `pnpm test`: types and application tests.
+## Deploy
 
-Start with the Webdev skill's default-template guide. Platform login, storage, payments and service contracts live in its shared references; read the relevant capability before extending its helper.
+Push this repository's `main` branch to GitHub, then follow [RENDER_DEPLOY.md](RENDER_DEPLOY.md) to deploy the checked-in Render Blueprint. The Blueprint keeps the organiser code in a protected Render prompt; do not commit secrets or participant data.
 
-`server/_core/publicConfig.ts` exposes only named public runtime values. Private keys stay server-side. The platform serves managed `/manus-storage/` assets; the application does not register a second proxy.
+## Commands
 
-Platform configuration is readable and editable through `webdev.config`. Default settings are initial values, not enforced constraints. The agent may modify the files, commands and configuration or follow the flexible guide for another stack.
+- `pnpm install --frozen-lockfile --prod=false` — install the pinned dependencies.
+- `pnpm check` — run TypeScript diagnostics.
+- `pnpm test` — run schema and session tests.
+- `pnpm build:render` — build the React site and Render server.
+- `pnpm start:render` — serve the production build (requires `DATABASE_URL`, `ADMIN_PIN`, and `SESSION_SECRET`).
+- `pnpm dev:static` — run the visual-only Manus Preview; it does not persist submissions.
+
+The Postgres schema is at `server/db/001_init.sql`. Set secrets only in Render's protected environment settings; no access code or database URL belongs in Git.
