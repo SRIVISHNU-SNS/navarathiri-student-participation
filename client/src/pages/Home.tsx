@@ -1,5 +1,5 @@
-import { useMemo, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { ArrowDown, ArrowUpRight, Check, Sparkles } from "lucide-react";
+import { useRef, useState, type FormEvent, type ReactNode } from "react";
+import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
 
 const FORM_RESPONSE_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSc9mPw699KngtaJU1WjYf6kpCi0gVuWXanXNLzpW9kj1bOqjw/formResponse";
@@ -21,12 +21,17 @@ const participationOptions = [
 ];
 const rehearsalOptions = ["Yes", "No", "Depends on schedule"];
 
-function DiyaMark() {
+function DanceMark() {
   return (
-    <svg aria-hidden="true" viewBox="0 0 44 44" fill="none" className="brand-mark">
-      <path d="M22 5.5c4.5 5.2 4.5 9.6 0 13.2-4.5-3.6-4.5-8 0-13.2Z" fill="currentColor" />
-      <path d="M10 24.5c3-3.2 7-4.8 12-4.8s9 1.6 12 4.8l-2.8 8.1c-.5 1.4-1.8 2.4-3.4 2.4H16.2c-1.6 0-2.9-1-3.4-2.4L10 24.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M15 29.2h14M18 33.2h8M6.5 19.2l2.8 1.1M37.5 19.2l-2.8 1.1M12.2 12.2l2 2M31.8 12.2l-2-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <svg aria-hidden="true" viewBox="0 0 64 64" fill="none" className="brand-mark">
+      <path d="M30 7c4.4-2 8.1 1.1 7.6 5-.4 3.8-5.3 5.2-8.1 2.7-2.5-2.2-1.7-6.2.5-7.7Z" fill="#E54376" stroke="#25265B" strokeWidth="1.35" />
+      <path d="m31 17 1.6 9.1-8.8 7.8m8.8-7.8 8.7 7.2m-9-7.1 7.5-7.8m-7.7 7.8-8-7.6" stroke="#25265B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="m24.2 18.3-6.8-8.6m23.4 9.6 7.7-8.2" stroke="#2455C7" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M24 34c4.8-3.4 11.6-3.6 17.3.1l5.3 8.8c.7 1.2 0 2.5-1.5 2.7L31 48.1l-13.2-3.4c-1.2-.3-1.7-1.7-.9-2.8l7.1-7.9Z" fill="#F2AE29" stroke="#25265B" strokeWidth="1.7" strokeLinejoin="round" />
+      <path d="M23.1 37.7c4.5 2.4 12.9 2.8 19.7.1M21.6 42c6.1 2.5 13.7 2.7 21.2.2" stroke="#E54376" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M14.3 51.1c4.4-3.1 10.1-4.1 16.7-3.1 7.6 1.2 13.2 1.1 19.2-1.4" stroke="#18866F" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M12 27.5c1.6-1.8 3.6-2.4 6.1-1.7m27-1.1c2.4-.3 4.4.5 5.8 2.4m-38 9.2 2.3-1m36.1 2.5 2 1.4" stroke="#D87A23" strokeWidth="1.7" strokeLinecap="round" />
+      <path d="m15.3 17.5 1.2 1.3m34.4 14.1 1.1 1.7m-41.8 4.3 1.6.4m39.3-22.2 1.7-.5" stroke="#E54376" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -48,11 +53,6 @@ export default function Home() {
     groupName: "", groupSize: "", groupMembers: "", rehearsal: "", query: "",
   });
   const [submission, setSubmission] = useState<"idle" | "sending" | "success" | "error">("idle");
-
-  const completion = useMemo(() => {
-    const required = [values.fullName, values.department, values.participation, values.participantType, values.rehearsal, values.query];
-    return Math.round((required.filter((value) => value.trim().length > 0).length / required.length) * 100);
-  }, [values]);
 
   function setField(field: keyof typeof values, value: string) {
     setValues((current) => ({
@@ -95,70 +95,66 @@ export default function Home() {
   return (
     <main className="site-shell">
       <header className="topbar">
-        <a className="wordmark" href="#top" aria-label="Navarathiri home"><DiyaMark /><span>Navarathiri</span></a>
-        <a className="top-link" href="#registration">Student participation <ArrowDown size={14} strokeWidth={1.7} /></a>
+        <a className="wordmark" href="#top" aria-label="Navarathiri home"><DanceMark /><span>Navarathiri</span></a>
+        <div className="header-partners"><span>SNS College of Technology</span><span>Coimbatore <b>×</b> NIAT</span></div>
+        <a className="top-link" href="#registration">Register <ArrowDown size={15} /></a>
       </header>
 
       <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <p className="eyebrow"><span className="eyebrow-line" /> A CAMPUS CELEBRATION</p>
-          <h1 id="hero-title">Bring your part<br />to the <em>celebration.</em></h1>
-          <p className="hero-intro">Dance, music, making, welcoming—there’s a place for the way you want to take part.</p>
-          <a className="hero-cta" href="#registration">Tell us how you’d like to join <ArrowDown size={15} /></a>
-          <div className="hero-note"><span className="note-dot" /> A few details, then you’re on the programme.</div>
+          <p className="event-place"><span>SNS College of Technology</span><span>Coimbatore <b>×</b> NIAT</span></p>
+          <h1 id="hero-title">Navarathiri</h1>
+          <p className="hero-intro">Dance, perform, create or help bring the celebration to life.</p>
+          <a className="hero-cta" href="#registration">Register to take part <ArrowDown size={16} /></a>
         </div>
         <figure className="hero-art">
-          <img src="/manus-storage/async-images/UZG36l4ErOL0GTAS7lZ3Tr/image-1.webp" alt="Hand-drawn dancers celebrating together with dandiya sticks" fetchPriority="high" />
-          <figcaption><span>MOVE TOGETHER</span><span>01 — NAVARATHIRI</span></figcaption>
-          <span className="art-stamp" aria-hidden="true">N<span>·</span>9</span>
+          <img src="/manus-storage/async-images/rLFafWYbhXQtywfwx31kCO/image-1.webp" alt="A hand-drawn group of friends celebrating Navarathiri with garba and dandiya" fetchPriority="high" />
+          <figcaption>Navarathiri at SNS College of Technology</figcaption>
         </figure>
-        <div className="hero-ornament" aria-hidden="true"><img src="/manus-storage/async-images/UZG36l4ErOL0GTAS7lZ3Tr/image-2.webp" alt="" /></div>
+      </section>
+
+      <section className="art-strip" aria-label="Hand-drawn Navarathiri illustrations">
+        <figure className="art-tile tile-dance"><img src="/manus-storage/async-images/rLFafWYbhXQtywfwx31kCO/image-2.webp" alt="A hand-drawn dancer holding dandiya sticks" loading="lazy" /><figcaption>Dance</figcaption></figure>
+        <figure className="art-tile tile-music"><img src="/manus-storage/async-images/rLFafWYbhXQtywfwx31kCO/image-3.webp" alt="A hand-drawn dhol player" loading="lazy" /><figcaption>Music</figcaption></figure>
+        <figure className="art-tile tile-rangoli"><img src="/manus-storage/async-images/rLFafWYbhXQtywfwx31kCO/image-4.webp" alt="A hand-drawn Navarathiri rangoli with diya and dandiya" loading="lazy" /><figcaption>Rangoli and crafts</figcaption></figure>
       </section>
 
       <section className="registration" id="registration" aria-labelledby="form-title">
         <div className="form-heading">
-          <div>
-            <p className="eyebrow"><span className="eyebrow-line" /> STUDENT PARTICIPATION</p>
-            <h2 id="form-title">Your place in the festivities.</h2>
-            <p className="form-intro">Tell us a little about yourself and how you’d like to be part of Navarathiri.</p>
-          </div>
-          <div className="progress-card" aria-label={`${completion}% of required fields completed`}>
-            <div className="progress-label"><span>YOUR PROGRESS</span><span>{completion}%</span></div>
-            <div className="progress-track" role="progressbar" aria-label="Required fields completed" aria-valuemin={0} aria-valuemax={100} aria-valuenow={completion}><span style={{ width: `${completion}%` }} /></div>
-            <span className="progress-caption">Fields marked <span className="required-mark">*</span> are required</span>
-          </div>
+          <div><p className="section-kicker">STUDENT REGISTRATION</p><h2 id="form-title">How will you take part?</h2></div>
+          <p className="required-note">Questions marked <span className="required-mark">*</span> are required.</p>
         </div>
 
         {submission === "success" ? (
           <div className="success-panel" role="status" aria-live="polite">
-            <div className="success-icon"><Check size={24} strokeWidth={1.7} /></div>
-            <p className="eyebrow"><span className="eyebrow-line" /> RESPONSE SENT</p>
-            <h3>You’re part of the celebration.</h3>
-            <p>Your participation details have been sent. Thank you for bringing your energy to Navarathiri.</p>
-            <button className="text-button" type="button" onClick={resetForAnotherResponse}>Send another response <ArrowUpRight size={15} /></button>
+            <span className="success-illustration"><Check size={29} strokeWidth={1.8} /></span>
+            <p className="section-kicker">RESPONSE SENT</p>
+            <h3>See you at Navarathiri.</h3>
+            <p>Your participation details have been sent to the event organisers.</p>
+            <button className="text-button" type="button" onClick={resetForAnotherResponse}>Send another response <ArrowUpRight size={16} /></button>
           </div>
         ) : (
           <form ref={visibleForm} className="form-body" onSubmit={handleSubmit} noValidate>
             <section className="form-section" aria-labelledby="section-about">
-              <div className="section-index"><span>01</span><span className="section-rule" /></div>
+              <div className="section-number number-coral">01</div>
               <div className="section-content">
-                <div className="section-heading"><div><h3 id="section-about">First, the basics</h3><p>So we know who’s joining us.</p></div><Sparkles className="section-sparkle" size={17} strokeWidth={1.4} aria-hidden="true" /></div>
+                <h3 id="section-about">Your details</h3>
                 <div className="field-grid">
-                  <div className="field-group"><FieldLabel htmlFor="full-name" required>Full Name</FieldLabel><input id="full-name" name="fullName" autoComplete="name" placeholder="Your name as you’d like it listed" required value={values.fullName} onChange={(e) => setField("fullName", e.target.value)} /></div>
-                  <div className="field-group"><FieldLabel htmlFor="department" required>Department/course</FieldLabel><input id="department" name="department" autoComplete="organization-title" placeholder="e.g. Computer Science, Year 2" required value={values.department} onChange={(e) => setField("department", e.target.value)} /></div>
+                  <div className="field-group"><FieldLabel htmlFor="full-name" required>Full Name</FieldLabel><input id="full-name" name="fullName" autoComplete="name" placeholder="Full name" required value={values.fullName} onChange={(e) => setField("fullName", e.target.value)} /></div>
+                  <div className="field-group"><FieldLabel htmlFor="department" required>Department/course</FieldLabel><input id="department" name="department" autoComplete="organization-title" placeholder="Department or course" required value={values.department} onChange={(e) => setField("department", e.target.value)} /></div>
                 </div>
               </div>
             </section>
 
             <section className="form-section" aria-labelledby="section-participation">
-              <div className="section-index"><span>02</span><span className="section-rule" /></div>
+              <div className="section-number number-blue">02</div>
               <div className="section-content">
-                <div className="section-heading"><div><h3 id="section-participation">How would you like to take part?</h3><p>Choose the one that feels most like you.</p></div></div>
+                <h3 id="section-participation">Your participation</h3>
                 <fieldset className="choice-fieldset"><legend className="field-label">How would you like to participate?<span className="required-mark" aria-label="required">*</span></legend>
                   <div className="activity-grid">{participationOptions.map((option, index) => (
                     <label className={`activity-option ${values.participation === option.value ? "is-selected" : ""}`} key={option.value}>
                       <input type="radio" name="participation" value={option.value} required={index === 0} checked={values.participation === option.value} onChange={(e) => setField("participation", e.target.value)} />
-                      <span className="activity-radio" aria-hidden="true"><span /></span><span className="activity-label">{option.label}</span>
+                      <span className="radio-art" aria-hidden="true"><span /></span><span className="activity-label">{option.label}</span>
                     </label>
                   ))}</div>
                 </fieldset>
@@ -166,45 +162,43 @@ export default function Home() {
                   <div className="type-options">{["Individual", "Group"].map((option, index) => (
                     <label className={`type-option ${values.participantType === option ? "is-selected" : ""}`} key={option}>
                       <input type="radio" name="participantType" value={option} required={index === 0} checked={values.participantType === option} onChange={(e) => setField("participantType", e.target.value)} />
-                      <span className="type-indicator" aria-hidden="true"><span /></span><span><strong>{option}</strong><small>{option === "Group" ? "A shared performance or team" : "Just me, on my own"}</small></span>
+                      <span className="radio-art" aria-hidden="true"><span /></span><strong>{option}</strong>
                     </label>
                   ))}</div>
                 </fieldset>
                 {values.participantType === "Group" && <div className="group-details" aria-live="polite">
-                  <div className="group-callout"><span className="group-flower" aria-hidden="true">✳</span><p><strong>A little about your group</strong><span>These details are optional, but help us plan.</span></p></div>
+                  <div className="group-heading"><h4>Group details</h4><span>Optional</span></div>
                   <div className="field-grid group-grid">
-                    <div className="field-group"><FieldLabel htmlFor="group-name">If group participation, what is your group name?</FieldLabel><input id="group-name" name="groupName" placeholder="Your team or performance name" value={values.groupName} onChange={(e) => setField("groupName", e.target.value)} /></div>
-                    <div className="field-group"><FieldLabel htmlFor="group-size">How many students are in your group?</FieldLabel><input id="group-size" name="groupSize" inputMode="numeric" placeholder="e.g. 6" value={values.groupSize} onChange={(e) => setField("groupSize", e.target.value)} /></div>
-                    <div className="field-group field-span"><FieldLabel htmlFor="group-members">Names of other group members</FieldLabel><textarea id="group-members" name="groupMembers" rows={2} placeholder="One name per line, if you know them" value={values.groupMembers} onChange={(e) => setField("groupMembers", e.target.value)} /></div>
+                    <div className="field-group"><FieldLabel htmlFor="group-name">If group participation, what is your group name?</FieldLabel><input id="group-name" name="groupName" placeholder="Group name" value={values.groupName} onChange={(e) => setField("groupName", e.target.value)} /></div>
+                    <div className="field-group"><FieldLabel htmlFor="group-size">How many students are in your group?</FieldLabel><input id="group-size" name="groupSize" inputMode="numeric" placeholder="Number of students" value={values.groupSize} onChange={(e) => setField("groupSize", e.target.value)} /></div>
+                    <div className="field-group field-span"><FieldLabel htmlFor="group-members">Names of other group members</FieldLabel><textarea id="group-members" name="groupMembers" rows={2} placeholder="Names of other group members" value={values.groupMembers} onChange={(e) => setField("groupMembers", e.target.value)} /></div>
                   </div>
                 </div>}
               </div>
             </section>
 
             <section className="form-section last-section" aria-labelledby="section-rehearsal">
-              <div className="section-index"><span>03</span><span className="section-rule" /></div>
+              <div className="section-number number-green">03</div>
               <div className="section-content">
-                <div className="section-heading"><div><h3 id="section-rehearsal">A couple more things</h3><p>Almost there. Help us get the details right.</p></div></div>
+                <h3 id="section-rehearsal">Rehearsal and questions</h3>
                 <fieldset className="choice-fieldset rehearsal-fieldset"><legend className="field-label">Are you available for the rehearsal?<span className="required-mark" aria-label="required">*</span></legend>
                   <div className="rehearsal-options">{rehearsalOptions.map((option, index) => (
                     <label className={`rehearsal-option ${values.rehearsal === option ? "is-selected" : ""}`} key={option}>
-                      <input type="radio" name="rehearsal" value={option} required={index === 0} checked={values.rehearsal === option} onChange={(e) => setField("rehearsal", e.target.value)} /><span className="rehearsal-indicator" aria-hidden="true"><span /></span>{option}
+                      <input type="radio" name="rehearsal" value={option} required={index === 0} checked={values.rehearsal === option} onChange={(e) => setField("rehearsal", e.target.value)} /><span className="radio-art" aria-hidden="true"><span /></span>{option}
                     </label>
                   ))}</div>
                 </fieldset>
-                <div className="field-group query-group"><FieldLabel htmlFor="query" required>Any other query?</FieldLabel><textarea id="query" name="query" rows={3} placeholder="Anything you’d like the organisers to know…" required value={values.query} onChange={(e) => setField("query", e.target.value)} /></div>
+                <div className="field-group query-group"><FieldLabel htmlFor="query" required>Any other query?</FieldLabel><textarea id="query" name="query" rows={3} placeholder="Any other query?" required value={values.query} onChange={(e) => setField("query", e.target.value)} /></div>
               </div>
             </section>
 
-            {submission === "error" && <div className="submit-error" role="alert">We couldn’t confirm the response. Please check your connection and try again, or <a href={SOURCE_FORM_URL} target="_blank" rel="noreferrer">open the original form</a>.</div>}
-            <div className="submit-row"><p><span className="required-mark">*</span> Your answers go to the student event organisers.</p><button className="submit-button" type="submit" disabled={submission === "sending"}>{submission === "sending" ? "Sending your response…" : "Send my response"}{submission === "sending" ? <span className="button-spinner" aria-hidden="true" /> : <ArrowUpRight size={17} strokeWidth={1.8} />}</button></div>
-            <p className="privacy-note">Your details are only used to coordinate Navarathiri participation.</p>
+            {submission === "error" && <div className="submit-error" role="alert">We couldn’t confirm that your response was sent. Please try again or <a href={SOURCE_FORM_URL} target="_blank" rel="noreferrer">open the original form</a>.</div>}
+            <div className="submit-row"><button className="submit-button" type="submit" disabled={submission === "sending"}>{submission === "sending" ? "Sending response…" : "Submit registration"}{submission === "sending" ? <span className="button-spinner" aria-hidden="true" /> : <ArrowUpRight size={18} />}</button></div>
           </form>
         )}
       </section>
 
-      <section className="closing-note" aria-label="Festival message"><img src="/manus-storage/async-images/UZG36l4ErOL0GTAS7lZ3Tr/image-2.webp" alt="" loading="lazy" /><div><span className="closing-kicker">MADE BETTER, TOGETHER</span><p>One campus. Many ways to celebrate.</p></div><span className="closing-mark" aria-hidden="true">✳</span></section>
-      <footer className="footer"><a className="footer-brand" href="#top"><DiyaMark /><span>Navarathiri</span></a><span>STUDENT PARTICIPATION · MADE FOR THE CELEBRATION</span><a href="#top" className="back-top">Back to top ↑</a></footer>
+      <footer className="footer"><a className="footer-brand" href="#top"><DanceMark /><span>Navarathiri</span></a><p>SNS College of Technology<br />Coimbatore <b>×</b> NIAT</p><a href="#top" className="back-top">Back to top ↑</a></footer>
 
       <iframe title="Google Forms submission response" name="navarathiri-response" className="submission-frame" onLoad={handleIframeLoad} />
       <form ref={googleForm} action={FORM_RESPONSE_URL} method="post" target="navarathiri-response" className="submission-frame-form" aria-hidden="true" tabIndex={-1}>

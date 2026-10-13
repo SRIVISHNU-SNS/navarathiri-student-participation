@@ -1,37 +1,38 @@
-# Navarathiri Student Participation — implementation plan
+# Navarathiri Student Participation — revised design and implementation
 
 ## Product and architecture
 
-Build a single-page React/Vite website in the initialized Webdev project, using its existing TypeScript and Tailwind setup. The one public route is `/`. Serve a matching static `client/public/manus-routes.json`; do not add a backend or database because this public registration flow can submit directly to the supplied public Google Form. Keep the source question wording, response choices, required flags and response destination in one small typed form configuration. Use a native cross-origin POST in a hidden iframe to the original Google Forms `formResponse` endpoint, using the source form's `entry.*` fields. Validate on the page before posting; on completion, replace the form with an honest confirmation state and show the original form as a fallback if the response cannot be confirmed. Do not collect registrations locally or display a saved-success state before the response frame returns.
+Build a single-page React/Vite site in the initialized Webdev project on route `/`. Keep the supplied Google Form's wording, requiredness, choices and `entry.*` IDs; validate in the browser and send a native POST to its public `formResponse` endpoint in a hidden iframe. Do not add local response storage, a server or a database. Confirm only after the response frame returns, and give a retry/link-to-source fallback if it cannot be confirmed.
 
-### Project structure
+## Project structure
 
-- `client/src/pages/Home.tsx` — page composition, responsive Navarathiri introduction, form sections, client validation, native submission and confirmation state.
-- `client/src/index.css` — page-specific colors, typography, spacing, responsive behavior, focus and reduced-motion styling.
-- `client/src/App.tsx` — one home route and not-found fallback.
-- `client/public/manus-routes.json` — exact page-route manifest for `/`.
-- Managed image storage — bespoke hero and rangoli/dandiya artwork, referenced by the exact managed-storage URLs returned by image generation.
-- `client/index.html` — title, description, theme color and lightweight metadata.
+- `client/src/pages/Home.tsx` — event identity, multi-illustration composition, institution attribution, exact registration fields, conditional group details and submission states.
+- `client/src/index.css` — saturated Navratri palette, editorial layout, responsive form, focus states and reduced-motion behavior.
+- `client/src/App.tsx` — the registration route and not-found fallback.
+- `client/public/manus-routes.json` — route declaration for `/`.
+- Managed project image storage — four custom illustrations for the dance scene, dancer, dhol player and rangoli vignette.
+- `client/public/navarathiri-mark.svg` and `app.config.ts` — custom dancer wordmark mark and project logo metadata.
+- `client/index.html` — event-specific title, description, theme color and favicon.
 
-## Design system
+## Design direction
 
-- **Design Movement:** contemporary Indian cultural editorial, grounded in hand-printed folk-art linework and the quiet confidence of an independent arts institution.
-- **Core Principles:** generous breathing room; legibility before ornament; culturally specific detail without visual clutter; warm, confident craft.
-- **Color Philosophy:** an uncoated-paper ivory canvas lets vermilion and aubergine feel vivid but composed; marigold ochre and muted leaf green appear as restrained accents. High-contrast dark ink carries all essential copy and controls.
-- **Layout Paradigm:** a spacious editorial masthead and asymmetric two-column hero on wide screens, followed by a narrow, vertically stacked form journey; a naturally single-column reading flow on phones. Do not center every element in a generic card grid.
-- **Signature Elements:** custom ink-and-gouache dance illustration; a small rangoli/dandiya print; fine rules and numbered section markers inspired by a festival programme.
-- **Interaction Philosophy:** clear, direct labels; large touch targets; native semantic inputs; visible required markers and errors; group details reveal only for group participants; every action is reversible without losing prior values.
-- **Animation:** subtle one-time fade/translate for decorative art only, with no layout movement; no looping motion; respect `prefers-reduced-motion` and keep the form immediately usable.
-- **Typography System:** system sans-serif for labels, helper text and body copy; Georgia/serif display headlines for an editorial voice. Load no external font, preserving speed and dependable mobile rendering.
-- **Brand Essence:** a thoughtful, student-first doorway into campus Navarathiri participation; **warm, expressive, considered**.
-- **Brand Voice:** concise, inviting, and practical. Examples: “Bring your part to the celebration.” “A few details, then you’re on the programme.”
-- **Wordmark & Logo:** a compact custom diya/rangoli mark beside the “Navarathiri” name, drawn as simple print-like geometry rather than a default-font icon.
-- **Signature Brand Color:** deep vermilion (`#C94D37`), used for primary actions and small wayfinding accents.
+- **Design Movement:** contemporary Indian festival printmaking, with the energy of a college Navratri poster and confident hand-illustrated folk-art details.
+- **Core Principles:** visibly joyful color; distinct, human-feeling illustration on each visual beat; concise event-first copy; familiar, easy forms with no visual clutter.
+- **Color Philosophy:** turmeric and warm paper bring light; royal cobalt anchors legibility; coral, fuchsia, leaf green and lilac give each illustration and section its own pulse. Saturated colors belong in art and small page accents; inputs remain clean and high-contrast.
+- **Layout Paradigm:** asymmetrical poster-like hero with college attribution and scene art, followed by a compact three-piece art strip and a single-column registration journey, responsive to phone widths.
+- **Signature Elements:** bespoke dancing-figure logo; four visibly distinct illustrations; three small numeral badges in different festival colors.
+- **Interaction Philosophy:** plain, exact labels; native radio and text controls; generous touch targets; group fields only when applicable; requiredness and errors visible and understandable.
+- **Animation:** small color/position response on hover and restrained group-field reveal only; no perpetual motion; respect reduced-motion preferences.
+- **Typography System:** a human editorial serif for “Navarathiri” and section titles; system sans-serif for labels, controls and supporting copy; no external font request.
+- **Brand Essence:** the joyful and practical sign-up point for an SNS College of Technology Navarathiri celebration with NIAT; **lively, crafted, welcoming**.
+- **Brand Voice:** short, clear and event-specific. Example copy: “Navarathiri at SNS.” “Register to take part.” Avoid generic filler, tagline fragments, decorative leading dashes and bullet-led microcopy.
+- **Wordmark & Logo:** a custom colorful hand-drawn garba dancer motif beside a plain typographic “Navarathiri” wordmark; no fabricated partner logos.
+- **Signature Brand Color:** royal cobalt (`#2557C8`) with saffron as its bright festival counterpoint.
 
-## Form behavior and content
+## Form and event
 
-Reproduce the supplied “Navarathiri Student Participation” form. Required questions are Full Name; Department/course; How would you like to participate? (Group Dance, Solo Dance, Classical Dance, Singing / Vocal Performance, Music / Instrumental Performance, Drama / Skit, Traditional Dress / Fashion Walk, Anchoring / Hosting, Rangoli / Creative Activities, Decoration / Event Volunteers, Other); Are you participating individually or as a group? (Individual, Group); Are you available for the rehearsal? (Yes, No, Depends on schedule); and Any other query? Optional fields are group name, group size, and other group members' names. Preserve the source's single-choice interaction for each multiple-choice question. Keep optional group fields visually secondary and show them when Group is selected. On submit, map fields to the source Google Form response IDs and exact response labels (cleaning visible `[ ] ` prefixes from choice copy only if necessary while preserving the source's stored choice text). Add accessible validation and a clear confirmation/failure state.
+The event reference must say **SNS College of Technology, Coimbatore × NIAT**. Reproduce the source “Navarathiri Student Participation” questions and answer choices: required Full Name; Department/course; “How would you like to participate?” with Group Dance, Solo Dance, Classical Dance, Singing / Vocal Performance, Music / Instrumental Performance, Drama / Skit, Traditional Dress / Fashion Walk, Anchoring / Hosting, Rangoli / Creative Activities, Decoration / Event Volunteers, Other; individual/group choice; optional group name, group size and names of other members; rehearsal availability (Yes, No, Depends on schedule); and required “Any other query?”. Retain the original single-choice behavior and exact stored option labels. Show optional group details only when the respondent chooses Group.
 
-## Serving and dependencies
+## Runtime
 
-Use existing React/Vite/TypeScript dependencies, with no extra runtime packages. This static site uses no database and no server; retain the initialized port and `build:static` configuration. Use the configured host TypeScript diagnostics. Start the existing static dev script on port 3000 only after the route manifest is in place, then validate with `pnpm check`, `pnpm build:static`, route-manifest HTTP check, and targeted phone/desktop rendering review.
+Use existing React, Tailwind, TypeScript and lucide dependencies, with no server or database. Keep route manifest, static port 3000 and `build:static`. Preserve the Google Form field IDs and its hidden-response iframe integration. Maintain host-managed TypeScript diagnostics and verify build, form completeness, mobile and desktop rendering before checkpointing.
