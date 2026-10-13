@@ -18,7 +18,7 @@
   - Keep the public form easy to complete on a phone; preserve responsive layouts, readable text, touch-sized controls, clear validation and a non-crowded dashboard.
   - Optimize/bundle illustrations for phone loading and respect reduced-motion preferences. Desktop and 375px mobile screenshots show the registration form and organiser gate without overflow.
 
-- [ ] **GitHub push and Render handoff**
+- [x] **GitHub push and Render handoff**
   - Create a new private GitHub repo under SRIVISHNU-SNS and push the finished `main` branch without replacing the existing Manus remote.
   - Prepare a Render Blueprint for the Free Node service and Free Postgres in Singapore, connect the database privately, generate the session secret and ask the deploying owner to set the organiser code in Render's protected prompt. Do not provision or deploy Render resources in this task.
   - In `RENDER_DEPLOY.md` and the final answer, note the accepted Free Postgres 1 GB capacity/30-day lifespan/14-day deletion grace, no backups and one-free-database workspace limit, and the Free web service's 15-minute idle sleep/roughly one-minute wake time; give concrete steps for the user to deploy from their private repo.
